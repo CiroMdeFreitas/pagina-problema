@@ -11,12 +11,12 @@ type ButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const variants = {
-  primary: "flex items-center border border-sub-30 bg-on-code hover:bg-on-code-70 text-white gap-[8px] px-[12px] py-[4px] rounded-[8px]",
-  secondary: "flex items-center border border-secondary gap-[8px] hover:bg-on-code-70 px-[12px] py-[4px] rounded-[8px]"
+  primary: "border-sub-30 bg-on-code hover:bg-on-code-70 text-white",
+  secondary: "border-secondary hover:bg-on-code-70"
 }
 
 export default function Button({ variant = "primary", iconLeft, iconRight, children, ...props}: ButtonProps) {
-  const dafaultClasses = '';
+  const dafaultClasses = 'flex items-center border gap-[8px] px-[12px] py-[4px] rounded-[8px]';
 
   return (
       <button {...props} className={`${dafaultClasses} ${variants[variant]} ${props.className}`} disabled>
