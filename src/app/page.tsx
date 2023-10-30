@@ -29,7 +29,7 @@ type ProblemDTO = {
 type SolutionDTO = {
   tittle: string,
   description: string;
-  value: number;
+  value: string;
   numVotes: number;
   voted?: boolean;
 }
@@ -57,14 +57,14 @@ export default function Home() {
       {
         tittle: "Título solução",
         description: "Et fugiat laudantium et voluptates eius ea omnis fuga. Ea reiciendis expedita sit ducimus dolore hic ducimus galisum aut assumenda veritatis nam tempore iure est provident soluta ad repellat porro. Aut harum sequi cum consequatur dignissimos aut Quis quis aut minus recusandae aut ratione natus quo ipsam nesciunt. A quos minima et ipsam consequatur ut sint omnis ut eius praesentium non veritatis libero et possimus unde non quia animi.",
-        value: 1000,
+        value: "1.000",
         numVotes: 9,
         voted: true,
       },
       {
         tittle: "Título solução",
         description: "Lorem ipsum dolor sit amet. Eum galisum atque sit ullam dicta non placeat neque et autem incidunt. Hic nemo assumenda id internos corrupti non doloremque illo rem quaerat voluptatem vel commodi possimus sed quisquam voluptas. Aut odit voluptatem et repudiandae voluptas nam dolor laborum qui earum omnis.",
-        value: 1000,
+        value: "1.000",
         numVotes: 5,
       },
     ],
