@@ -7,6 +7,7 @@ import problem_image from "@/assets/mock_images/problem_image.png"
 import { Icon } from "@iconify/react/dist/iconify.js";
 import SolutionDiv from "@/components/SolutionDiv";
 import { v4 as uuidv4 } from 'uuid';
+import CardDiv from "@/components/CardDiv";
 
 // DTOs
 type ProblemDTO = {
@@ -112,10 +113,10 @@ export default function Home() {
             <p>{problem.description}</p>
 
             <div className="gap-2 py-[32px]">
-              <form>
-                <input type="text" placeholder="Adicione o título..." />
-                <input type="text" placeholder="Descreva a sua solução..." />
-              </form>
+              <CardDiv variant="gray">
+                <input className="w-[100%] bg-transparent placeholder-black placeholder:font-bold" type="text" placeholder="Adicione o título..." />
+                <input className="w-[100%] bg-transparent placeholder-black" type="text" placeholder="Descreva a sua solução..." />
+              </CardDiv>
 
               {
                 problem.solutions.map((solution) => {
