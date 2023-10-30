@@ -100,23 +100,29 @@ export default function Home() {
           {problem.tittle}
         </div>
 
-        <div>
+        <div className="py-[38px]">
           <div>
-            <Image width={860} height={484} src={problem.image.source} alt={problem.image.alternativeText ? problem.image.alternativeText : "Imagem do problema."} />
+            <Image className="py-[10px]" width={860} height={484} src={problem.image.source} alt={problem.image.alternativeText ? problem.image.alternativeText : "Imagem do problema."} />
 
-            <p><Icon icon="fluent:location-28-filled" className="w-[14px] h-[14px]"/> {problem.address.neighborhood}, {problem.address.city} - {problem.address.estate}</p>
+            <div className="py-[14px] flex items-center">
+              <Icon icon="fluent:location-28-filled" className="w-[14px] h-[14px]"/>
+              {problem.address.neighborhood}, {problem.address.city} - {problem.address.estate}
+            </div>
 
             <p>{problem.description}</p>
 
-            <div>
-              
-            </div>
+            <div className="gap-2 py-[32px]">
+              <form>
+                <input type="text" placeholder="Adicione o título..." />
+                <input type="text" placeholder="Descreva a sua solução..." />
+              </form>
 
-            {
-              problem.solutions.map((solution) => {
-                 return <SolutionDiv key={uuidv4()} solution={solution} />
-              })
-            }
+              {
+                problem.solutions.map((solution) => {
+                   return <SolutionDiv key={uuidv4()} solution={solution} />
+                })
+              }
+            </div>
           </div>
 
           <div>
