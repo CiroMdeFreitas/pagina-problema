@@ -3,11 +3,13 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Image from "next/image";
-import problem_image from "@/assets/mock_images/problem_image.png"
+import problem_image from "@/assets/mock_images/problem_image.png";
+import profile from "@/assets/mock_images/profile.svg";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import SolutionDiv from "@/components/SolutionDiv";
 import { v4 as uuidv4 } from 'uuid';
 import CardDiv from "@/components/CardDiv";
+import CommentDiv from "@/components/CommentDiv";
 
 // DTOs
 type ProblemDTO = {
@@ -35,7 +37,7 @@ type SolutionDTO = {
 }
 
 type CommentDTO = {
-  profile: string;
+  profile: typeof profile;
   username: string;
   comment: string;
 }
@@ -70,22 +72,22 @@ export default function Home() {
     ],
     comments: [
       {
-        profile: "",
+        profile: profile,
         username: "Nome Sobrenome",
         comment: "Lorem ipsum dolor sit amet.",
       },
       {
-        profile: "",
+        profile: profile,
         username: "Nome Sobrenome",
         comment: "Et inventore rerum ab reprehenderit autem ut omnis pariatur! 33 rerum quia sit neque dolorum et neque repellat qui sapiente eius!",
       },
       {
-        profile: "",
+        profile: profile,
         username: "Nome Sobrenome",
         comment: "Et inventore rerum ab reprehenderit autem ut omnis pariatur! 33 rerum quia sit neque dolorum et neque repellat qui sapiente eius!",
       },
       {
-        profile: "",
+        profile: profile,
         username: "Nome Sobrenome",
         comment: "Lorem ipsum dolor sit amet.",
       },
@@ -96,16 +98,17 @@ export default function Home() {
     <main>
       <Header />
 
-      <div className="px-[56px] py-[56px]">
-        <div className="text-center text-[56px] not-italic font-extrabold leading-[normal]">
-          {problem.tittle}
-        </div>
+      <div className="grid grid-cols-2 gap-8 px-[56px] py-[56px]">
+        <div>
+          <div className="text-center text-[56px] font-extrabold leading-[normal]">
+            {problem.tittle}
+          </div>
+          
+          <div className="py-[38px]">
+            <div>
+              <Image className="py-[10px]" width={860} height={484} src={problem.image.source} alt={problem.image.alternativeText ? problem.image.alternativeText : "Imagem do problema."} />
 
-        <div className="py-[38px]">
-          <div>
-            <Image className="py-[10px]" width={860} height={484} src={problem.image.source} alt={problem.image.alternativeText ? problem.image.alternativeText : "Imagem do problema."} />
-
-            <div className="py-[14px] flex items-center">
+              <div className="py-[14px] flex items-center">
               <Icon icon="fluent:location-28-filled" className="w-[14px] h-[14px]"/>
               {problem.address.neighborhood}, {problem.address.city} - {problem.address.estate}
             </div>
@@ -123,11 +126,31 @@ export default function Home() {
                    return <SolutionDiv key={uuidv4()} solution={solution} />
                 })
               }
+              </div>
             </div>
           </div>
+        </div>
 
-          <div>
+        <div>
+          <div className="text-center text-[32px] font-extrabold leading-[normal]">
+            Discussão
+          </div>
 
+          <div className="py=[16px]">*Você pode votar até às 23h59 do dia 00/00/0000</div>
+
+          <div className="block space-y-2 py-[32px]">
+            <CardDiv variant="gray" className="flex justify-between items-center">
+              <Image className="py-[10px]" width={50} height={50} src={problem.comments[0].profile} alt={"Foto de perfil de " + problem.comments[0].username + "."} />
+              <div className="px-[16px] py-[16px] grow">
+                <input className="w-[100%] bg-transparent placeholder-black" type="text" placeholder="Adicione um comentário..." />
+              </div>
+            </CardDiv>
+
+            {
+              problem.comments.map((comment) => {
+                return <CommentDiv key={uuidv4()} comment={comment} />
+              })
+            }
           </div>
         </div>
       </div>
